@@ -1,0 +1,12 @@
+{
+  "name": "dummy-duckdb-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "duckdb": "v0.5.1"
+  },
+  "scripts": {
+    "test": "node index.js"
+  }
+}

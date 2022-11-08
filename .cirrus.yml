@@ -2,9 +2,9 @@ macos_instance:
   image: ghcr.io/cirruslabs/macos-ventura-base:latest
 
 check_task:
+  install_script: brew install nodejs
   node_modules_cache:
     folder: node_modules
     fingerprint_script: cat package-lock.json
     populate_script: npm install
-  install_script: brew install nodejs
   test_script: npm test

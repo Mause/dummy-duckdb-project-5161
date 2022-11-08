@@ -5,6 +5,7 @@ const {join} = require('path');
 let duckdb_package = join(require.resolve('duckdb'), '../../package.json');
 let pkg_json = JSON.parse(readFileSync(duckdb_package).toString());
 console.log('duckdb version:', pkg_json.version);
+console.log('arch:', process.arch);
 
 const db = new duckdb.Database(":memory:");
 

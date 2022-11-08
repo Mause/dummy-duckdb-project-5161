@@ -8,3 +8,5 @@ check_task:
     fingerprint_script: cat package-lock.json
     populate_script: npm install
   test_script: npm test
+  binaries_artifacts:
+    path: "node_modules/duckdb/lib/binding"

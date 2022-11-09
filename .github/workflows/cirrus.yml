@@ -10,4 +10,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Continue	
-      run: echo "Hello after Cirrus CI Completed"
+      run: |
+        echo "Hello after Cirrus CI Completed: {{ github.event.check_suite }}"

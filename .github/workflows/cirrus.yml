@@ -11,4 +11,4 @@ jobs:
     steps:
     - name: Continue	
       run: |
-        echo "Hello after Cirrus CI Completed: {{ github.event.check_suite }}"
+        echo "Hello after Cirrus CI Completed: ${{ github.event.check_suite }}"

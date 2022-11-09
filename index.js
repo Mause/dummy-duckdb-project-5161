@@ -1,15 +1,17 @@
 const duckdb = require('duckdb')
-const {readFileSync} = require('fs');
-const {join} = require('path');
+const { readFileSync } = require('fs');
+const { join } = require('path');
 
 let duckdb_package = join(require.resolve('duckdb'), '../../package.json');
 let pkg_json = JSON.parse(readFileSync(duckdb_package).toString());
 console.log('duckdb version:', pkg_json.version);
 console.log('arch:', process.arch);
 
-const db = new duckdb.Database(":memory:");
-
 async function main() {
+    const db = await new Promise(resolve => {
+        let db = new duckdb.Database(":memory", () => resolve(db));
+    });
+
     console.log('Program Started ...');
     try {
         const res = await new Promise((resolve, reject) =>

@@ -8,7 +8,7 @@ download_object = multithread.Downloader(url, 'lineitem.parquet')
 download_object.start()
 
 con = duckdb.connect()
-con.execute("SET memory_limit='10GB';")
+#con.execute("SET memory_limit='10GB';")
 con.execute("SET temp_directory = '.';")
 result = con.execute(
 '''

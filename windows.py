@@ -11,7 +11,7 @@ con = duckdb.connect()
 result = con.execute(
 '''
 SET memory_limit='10GB';
-SET temporary_dir ='.';
+SET temp_directory ='.';
 select *,extract ( year from l_shipdate) as year  from 'lineitem.parquet' order by l_shipdate
 ''').fetch_record_batch()
 print('fetched')

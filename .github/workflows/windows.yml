@@ -7,4 +7,5 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: curl -L 'https://drive.google.com/uc?export=download&id=18gv0Yd_a-Zc7CSolol8qeYVAAzSthnSN&confirm=t' > lineitem.parquet
+      - run: python3 -m pip install duckdb pyarrow 
       - run: python3 windows.py

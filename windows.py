@@ -1,5 +1,12 @@
 import pyarrow.dataset as ds
-import duckdb 
+import duckdb
+
+url = 'https://drive.google.com/uc?export=download&id=18gv0Yd_a-Zc7CSolol8qeYVAAzSthnSN&confirm=t'
+import multithread
+
+download_object = multithread.Download(url, 'lineitem.parquet')
+download_object.start()
+
 con = duckdb.connect()
 result =con.execute(
 '''

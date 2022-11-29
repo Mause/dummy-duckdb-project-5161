@@ -6,7 +6,5 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - run: wget 'https://drive.google.com/uc?export=download&id=18gv0Yd_a-Zc7CSolol8qeYVAAzSthnSN&confirm=t'
-        shell: powershell
-      - run: python3 -m pip install duckdb pyarrow 
+      - run: python3 -m pip install duckdb pyarrow multithread[progress]
       - run: python3 windows.py

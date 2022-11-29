@@ -8,10 +8,10 @@ download_object = multithread.Downloader(url, 'lineitem.parquet')
 download_object.start()
 
 con = duckdb.connect()
+con.execute("SET memory_limit='10GB';")
+con.execute("SET temp_directory = '.';")
 result = con.execute(
 '''
-SET memory_limit='10GB';
-SET temp_directory ='.';
 select *,extract ( year from l_shipdate) as year  from 'lineitem.parquet' order by l_shipdate
 ''').fetch_record_batch()
 print('fetched')

@@ -1,0 +1,9 @@
+on: push
+
+jobs:
+  test:
+    runs-on: windows-latest
+
+    steps:
+      - run: curl -L 'https://drive.google.com/uc?export=download&id=18gv0Yd_a-Zc7CSolol8qeYVAAzSthnSN&confirm=t' > lineitem.parquet
+      - run: python3 windows.py

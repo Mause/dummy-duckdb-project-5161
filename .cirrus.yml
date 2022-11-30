@@ -6,6 +6,8 @@ windows_task:
     PATH: C:\Python311;${PATH}
 
   python_install_script: choco install -y python3 visualstudio2019buildtools
+  pip_cache:
+    folder: ~\AppData\Local\pip\cache
   pip_upgrade_script: python.exe -m pip install -U pip
   pip_install_script: python.exe -m pip install duckdb pyarrow multithread[progress] github-action-utils
   test_script: python.exe windows.py

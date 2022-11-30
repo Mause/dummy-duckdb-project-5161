@@ -7,6 +7,7 @@ with group("download"):
     multithread.Downloader(
         "https://drive.google.com/uc?export=download&id=18gv0Yd_a-Zc7CSolol8qeYVAAzSthnSN&confirm=t",
         "lineitem.parquet",
+        aiohttp_args={'ssl': False}
     ).start()
 
 con = duckdb.connect()

@@ -15,5 +15,7 @@ windows_task:
   windows_container:
     image: cirrusci/windowsservercore:2019
 
-  install_script: python3 -m pip install duckdb pyarrow multithread[progress] github-action-utils
+  install_script: |
+    choco install -y python3
+    python3 -m pip install duckdb pyarrow multithread[progress] github-action-utils
   test_script: python3 windows.py

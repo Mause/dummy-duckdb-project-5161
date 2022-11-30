@@ -3,8 +3,6 @@ import duckdb
 import multithread
 from github_action_utils import group
 
-faulthandler.enable()
-
 with group("download"):
     multithread.Downloader(
         "https://drive.google.com/uc?export=download&id=18gv0Yd_a-Zc7CSolol8qeYVAAzSthnSN&confirm=t",
@@ -13,7 +11,7 @@ with group("download"):
 
 con = duckdb.connect()
 con.execute("SET enable_progress_bar = true")
-# con.execute("SET memory_limit='10GB';")
+con.execute("SET memory_limit='6.5GB';")
 con.execute("SET temp_directory = '.';")
 
 with group("query"):

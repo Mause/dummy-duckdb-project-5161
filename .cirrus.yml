@@ -1,3 +1,12 @@
+windows_task:
+  windows_container:
+    image: cirrusci/windowsservercore:2019
+
+  python_install_script: choco install -y python3
+  pip_upgrade_script: C:\Python311\python.exe -m pip install -U pip
+  pip_install_script: pip install duckdb pyarrow multithread[progress] github-action-utils
+  test_script: python windows.py
+
 check_task:
   macos_instance:
     image: ghcr.io/cirruslabs/macos-ventura-base:latest
@@ -10,12 +19,3 @@ check_task:
   test_script: npm test
   binaries_artifacts:
     path: "node_modules/duckdb/lib/binding/duckdb.node"
-
-windows_task:
-  windows_container:
-    image: cirrusci/windowsservercore:2019
-
-  install_script: |
-    choco install -y python3
-    python -m pip install duckdb pyarrow multithread[progress] github-action-utils
-  test_script: python windows.py

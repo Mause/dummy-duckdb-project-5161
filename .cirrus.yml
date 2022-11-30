@@ -3,7 +3,7 @@ windows_task:
     image: cirrusci/windowsservercore:2019
 
   env:
-    PATH: C:\Python311:${PATH}
+    PATH: C:\Python311;${PATH}
 
   python_install_script: choco install -y python3
   pip_upgrade_script: python.exe -m pip install -U pip

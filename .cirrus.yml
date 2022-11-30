@@ -5,7 +5,7 @@ windows_task:
   env:
     PATH: C:\Python311;${PATH}
 
-  python_install_script: choco install -y python3 visualstudio2017buildtools
+  python_install_script: choco install -y python3 microsoft-visual-cpp-build-tools
   pip_cache:
     folder: ~\AppData\Local\pip\cache
     populate_script: python.exe -m pip install duckdb pyarrow multithread[progress] github-action-utils

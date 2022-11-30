@@ -6,5 +6,5 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - run: python3 -m pip install duckdb pyarrow multithread[progress]
+      - run: python3 -m pip install duckdb pyarrow multithread[progress] github-action-utils
       - run: python3 windows.py

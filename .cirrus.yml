@@ -2,8 +2,11 @@ windows_task:
   windows_container:
     image: cirrusci/windowsservercore:2019
 
+  env:
+    PATH: C:\Python311:${PATH}
+
   python_install_script: choco install -y python3
-  pip_upgrade_script: C:\Python311\python.exe -m pip install -U pip
+  pip_upgrade_script: python.exe -m pip install -U pip
   pip_install_script: pip install duckdb pyarrow multithread[progress] github-action-utils
   test_script: python windows.py
 

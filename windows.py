@@ -11,7 +11,7 @@ with group("download"):
 
 con = duckdb.connect()
 con.execute("SET enable_progress_bar = true")
-con.execute("SET memory_limit='6.5GB';")
+# con.execute("SET memory_limit='6.5GB';")
 con.execute("SET temp_directory = '.';")
 
 with group("query"):

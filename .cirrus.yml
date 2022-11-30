@@ -1,7 +1,7 @@
-macos_instance:
-  image: ghcr.io/cirruslabs/macos-ventura-base:latest
-
 check_task:
+  macos_instance:
+    image: ghcr.io/cirruslabs/macos-ventura-base:latest
+
   install_script: brew install nodejs
   node_modules_cache:
     folder: node_modules
@@ -10,3 +10,10 @@ check_task:
   test_script: npm test
   binaries_artifacts:
     path: "node_modules/duckdb/lib/binding/duckdb.node"
+
+windows_task:
+  windows_container:
+    image: cirrusci/windowsservercore:2019
+
+  install_task: python3 -m pip install duckdb pyarrow multithread[progress] github-action-utils
+  test_task: python3 windows.py

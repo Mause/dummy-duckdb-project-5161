@@ -1,10 +1,10 @@
 import pyarrow.dataset as ds
 import duckdb
 import multithread
-import tracealloc
+import tracemalloc
 from github_action_utils import group
 
-tracealloc.start()
+tracemalloc.start()
 
 with group('download'):
   multithread.Downloader('https://drive.google.com/uc?export=download&id=18gv0Yd_a-Zc7CSolol8qeYVAAzSthnSN&confirm=t', 'lineitem.parquet').start()

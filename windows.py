@@ -7,9 +7,8 @@ import multithread
 download_object = multithread.Downloader(url, 'lineitem.parquet')
 download_object.start()
 
-con = duckdb.connect(config={
-  'enable_progress_bar': True
-})
+con = duckdb.connect()
+con.execute('SET enable_progress_bar = true')
 #con.execute("SET memory_limit='10GB';")
 con.execute("SET temp_directory = '.';")
 result = con.execute(

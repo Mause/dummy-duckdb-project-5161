@@ -18,7 +18,9 @@ con.execute("SET temp_directory = '.';")
 
 with group("query"):
     try:
-        result = con.execute("select *, extract (year from l_shipdate) as year from 'lineitem.parquet' order by l_shipdate").fetch_record_batch()
+        result = con.execute(
+            "select *, extract (year from l_shipdate) as year from 'lineitem.parquet' order by l_shipdate"
+        ).fetch_record_batch()
     except duckdb.IOException as e:
         print(e)
         raise

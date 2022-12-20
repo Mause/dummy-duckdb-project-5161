@@ -41,7 +41,7 @@ check_task:
     fingerprint_script: |
       cat package-lock.json
       node -v
-    populate_script: npm install duckdb
+    populate_script: npm install
   test_script: npm test
   binaries_artifacts:
     path: "node_modules/duckdb/lib/binding/duckdb.node"

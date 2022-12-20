@@ -36,12 +36,13 @@ check_task:
   version_script: |
     node -v
     npm -v
-  node_modules_cache:
-    folder: node_modules
-    fingerprint_script: |
-      cat package-lock.json
-      node -v
-    populate_script: npm install
+#   node_modules_cache:
+#     folder: node_modules
+#     fingerprint_script: |
+#       cat package-lock.json
+#       node -v
+#     populate_script: npm install
+  duckdb_install_script: npm install duckdb@0.5.1
   test_script: npm test
   binaries_artifacts:
     path: "node_modules/duckdb/lib/binding/duckdb.node"

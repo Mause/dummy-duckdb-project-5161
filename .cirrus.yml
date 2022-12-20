@@ -1,15 +1,15 @@
-windows_task:
-  windows_container:
-    image: cirrusci/windowsservercore:2019
+# windows_task:
+#   windows_container:
+#     image: cirrusci/windowsservercore:2019
 
-  env:
-    PATH: C:\Python311;${PATH}
+#   env:
+#     PATH: C:\Python311;${PATH}
 
-  python_install_script: choco install -y python3 visualstudio2019-workload-vctools
-  pip_cache:
-    folder: ~\AppData\Local\pip\cache
-    populate_script: python.exe -m pip install duckdb pyarrow multithread[progress] certifi pip_system_certs github-action-utils -U
-  test_script: python.exe windows.py
+#   python_install_script: choco install -y python3 visualstudio2019-workload-vctools
+#   pip_cache:
+#     folder: ~\AppData\Local\pip\cache
+#     populate_script: python.exe -m pip install duckdb pyarrow multithread[progress] certifi pip_system_certs github-action-utils -U
+#   test_script: python.exe windows.py
 
 check_task:
   macos_instance:
@@ -19,7 +19,7 @@ check_task:
   node_modules_cache:
     folder: node_modules
     fingerprint_script: cat package-lock.json
-    populate_script: npm install
+    populate_script: npm install duckdb@0.5.1
   test_script: npm test
   binaries_artifacts:
     path: "node_modules/duckdb/lib/binding/duckdb.node"

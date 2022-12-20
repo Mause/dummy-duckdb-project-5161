@@ -28,7 +28,7 @@ check_task:
 
     nvm use 16.13.2
 
-    where node
+    which node
 
   version_script: |
     node -v

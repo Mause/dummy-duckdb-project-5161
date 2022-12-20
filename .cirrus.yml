@@ -15,7 +15,19 @@ check_task:
   macos_instance:
     image: ghcr.io/cirruslabs/macos-ventura-base:latest
 
-  install_script: brew install nodejs
+  install_script: |
+    brew install nvm
+
+    mkdir ~/.nvm
+
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && . "$(brew --prefix)/opt/nvm/nvm.sh" # This loads nvm
+    [ -s "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" ] && . "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
+
+    nvm install 16.13.2
+
+    nvm use 16.13.2
+
   version_script: |
     node -v
     npm -v

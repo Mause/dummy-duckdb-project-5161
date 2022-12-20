@@ -38,7 +38,9 @@ check_task:
     npm -v
   node_modules_cache:
     folder: node_modules
-    fingerprint_script: cat package-lock.json
+    fingerprint_script: |
+      cat package-lock.json
+      node -v
     populate_script: npm install duckdb
   test_script: npm test
   binaries_artifacts:

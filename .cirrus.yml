@@ -19,7 +19,7 @@ check_task:
   node_modules_cache:
     folder: node_modules
     fingerprint_script: cat package-lock.json
-    populate_script: npm install duckdb@0.5.1
+    populate_script: npm install duckdb
   test_script: npm test
   binaries_artifacts:
     path: "node_modules/duckdb/lib/binding/duckdb.node"

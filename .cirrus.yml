@@ -28,6 +28,8 @@ check_task:
 
     nvm use 16.13.2
 
+    where node
+
   version_script: |
     node -v
     npm -v

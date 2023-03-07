@@ -3,8 +3,21 @@ on: push
 jobs:
   test:
     runs-on: windows-latest
+    
+    strategy:
+      matrix:
+        python_version: ['3.6', '3.7', '3.8', '3.9', '3.10', '3.11']
 
     steps:
       - uses: actions/checkout@v2
+
+      - name: Setup Python
+        uses: actions/setup-python@v4.5.0
+        with:
+          # Version range or exact version of Python or PyPy to use, using SemVer's version range syntax. Reads from .python-version if unset.
+          python-version: ${{ matrix.python_version }}
+          
+      - run: python3 -V
+
       - run: python3 -m pip install fsspec -U
       - run: python3 windows.py

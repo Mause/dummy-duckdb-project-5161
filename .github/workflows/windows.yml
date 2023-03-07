@@ -20,5 +20,5 @@ jobs:
           
       - run: python3 -V
 
-      - run: python3 -m pip install fsspec -U
+      - run: python3 -m pip install fsspec -Uvvv
       - run: python3 windows.py

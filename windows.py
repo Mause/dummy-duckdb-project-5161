@@ -1,36 +1,11 @@
-import pyarrow.dataset as ds
-import duckdb
-import multithread
-from github_action_utils import group
+import fsspec
+from fsspec.implementations.memory import MemoryFileSystem
+import io
 
-with group("download"):
-    multithread.Downloader(
-        "https://drive.google.com/uc?export=download&id=18gv0Yd_a-Zc7CSolol8qeYVAAzSthnSN&confirm=t",
-        "lineitem.parquet",
-        aiohttp_args={'ssl': False}
-    ).start()
+class ModifiedMemoryFileSystem(MemoryFileSystem):
+	protocol = ('DUCKDB_INTERNAL_OBJECTSTORE',)
+	# defer to the original implementation that doesn't hardcode the protocol
+	_strip_protocol = classmethod(AbstractFileSystem._strip_protocol.__func__)
+    
 
-con = duckdb.connect()
-con.execute("SET enable_progress_bar = true")
-# con.execute("SET memory_limit='6.5GB';")
-con.execute("SET temp_directory = '.';")
-
-with group("query"):
-    try:
-        result = con.execute(
-            "select *, extract (year from l_shipdate) as year from 'lineitem.parquet' order by l_shipdate"
-        ).fetch_record_batch()
-    except duckdb.IOException as e:
-        print(e)
-        raise
-
-with group("write"):
-    ds.write_dataset(
-        result,
-        "out_lineitem",
-        format="parquet",
-        partitioning=["year"],
-        partitioning_flavor="hive",
-        max_rows_per_group=120000,
-        existing_data_behavior="overwrite_or_ignore",
-    )
+print(ModifiedMemoryFileSystem().unstrip_protocol('hello.csv'))

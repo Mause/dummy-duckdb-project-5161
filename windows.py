@@ -1,5 +1,6 @@
 import fsspec
 from fsspec.implementations.memory import MemoryFileSystem
+from fsspec import filesystem, AbstractFileSystem
 import io
 
 class ModifiedMemoryFileSystem(MemoryFileSystem):
